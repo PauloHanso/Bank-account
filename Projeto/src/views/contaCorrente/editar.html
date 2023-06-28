@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>Cadastrar Conta Corrente</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+
+  <body>
+    <div class="container mt-5">
+      {{#erro}}
+      <div class="alert alert-danger alert-dismissible">
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+        ></button>
+        <strong>{{erro}}</strong> não foi possível editar o cadastro.
+      </div>
+      {{/erro}} {{#sucesso}}
+      <div class="alert alert-success alert-dismissible">
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+        ></button>
+        <strong>Certo!</strong> cadastro editado com sucesso.
+      </div>
+      {{/sucesso}}
+
+      <h1>Editar cadastro de conta corrente</h1>
+
+      <form method="post" action="/conta/editar">
+        <div class="row">
+          <div class="col-4">
+            <label class="form-label" for="nome">Nome</label>
+            <input
+              class="form-control"
+              type="text"
+              id="nome"
+              name="nome"
+              value="{{conta.nome}}"
+            />
+          </div>
+          <div class="col-4">
+            <label class="form-label" for="numero">Número</label>
+            <input
+              class="form-control"
+              type="text"
+              id="numero"
+              name="numero"
+              value="{{conta.numero}}"
+            />
+          </div>
+          <div class="col-4">
+            <label class="form-label" for="data_abertura"
+              >Data de Abetura</label
+            >
+            <input
+              class="form-control"
+              type="date"
+              id="data_abertura"
+              name="data_abertura"
+              value="{{conta.data_abertura}}"
+            />
+          </div>
+        </div>
+        <div
+          class="d-flex align-items-center d-flex justify-content-center mt-3 gap-3"
+        >
+          <button type="submit" class="btn btn btn-outline-primary btn-block col-4">
+            Salvar
+          </button>
+          <a class="btn btn btn-outline-danger col-4" href="/conta/listar" role="button"
+            >Retornar</a
+          >
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
